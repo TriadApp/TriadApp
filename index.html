@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<script src="triadapp.js"></script>
+	</head>
+	<body>
+		<div id="triadBrowser">
+			<div>
+				<select id="notes">
+				  <option value="c">C</option>
+				  <option value="cSharp">C#</option>
+				  <option value="d">D</option>
+				  <option value="dSharp">D#</option>
+				  <option value="e">E</option>
+				  <option value="f">F</option>
+				  <option value="fSharp">F#</option>
+				  <option value="g">G</option>
+				  <option value="gSharp">G#</option>
+				  <option value="a">A</option>
+				  <option value="aSharp">A#</option>
+				  <option value="b">B</option>
+				</select>
+				<select id="triadType">
+				  <option value="major">Major</option>
+				  <option value="minor">Minor</option>
+				  <option value="aug">Augmented</option>
+				  <option value="dim">Diminished</option>
+				  <option value="sus2">Sus 2</option>	
+				  <option value="sus4">Sus 4</option>					  
+				</select>				
+			</div>
+			<div><button onclick="updateTriad()">FIND</BUTTON></div>
+			<br/>
+			<div id="showTriad">				
+			</div>
+		</div>
+		
+		<br/><br/>
+		
+		<div>
+			<div> 
+				<span> Find </span> 
+				<select id="triadTypeFinder">				
+				  <option value="major">Major</option>
+				  <option value="minor">Minor</option>
+				  <option value="aug">Augmented</option>
+				  <option value="dim">Diminished</option>
+				  <option value="sus2">Sus 2</option>	
+				  <option value="sus4">Sus 4</option>					  
+				</select>
+				<span> triad </span> 
+			</div>
+			<div> 
+				<span> in which the note </span> 
+				<select id="notesFinder">
+				  <option value="c">C</option>
+				  <option value="cSharp">C#</option>
+				  <option value="d">D</option>
+				  <option value="dSharp">D#</option>
+				  <option value="e">E</option>
+				  <option value="f">F</option>
+				  <option value="fSharp">F#</option>
+				  <option value="g">G</option>
+				  <option value="gSharp">G#</option>
+				  <option value="a">A</option>
+				  <option value="aSharp">A#</option>
+				  <option value="b">B</option>
+				</select>				
+			</div>
+			<div> 
+				<span> occurs at the </span> 
+				<select id="position">
+				  <option value="first">First</option>
+				  <option value="second">Second</option>
+				  <option value="third">Third</option>				  				 
+				</select>
+				<span> position </span>				
+			</div>
+			<div> <button onclick="findTriads()">FIND</BUTTON>				 </div>
+			<br/>
+			<div id="showTriadFinder">				
+			</div>
+		<div/>
+	</body>
+</html>

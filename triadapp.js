@@ -6,7 +6,9 @@ var showTriadDivID = "showTriad";
 
 var notesFinderDropdownID = "notesFinder";
 
-var musicalNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A","A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A","A#", "B"]
+var musicalNotes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A","A#", "B", 
+					"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A","A#", "B", 
+					"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A","A#", "B"];
 
 var noteDiffDict = {
 						major: {first: 3, second: 2},
@@ -21,7 +23,7 @@ var noteDiffDict = {
 						minor7: {first: 2, second: 3, third: 2},
 						dominant7: {first: 3, second: 2, third: 2},
 						sixth: {first: 3, second: 2, third: 1},
-						minor6th: {first: 2, second: 3, third: 1},
+						minor6th: {first: 2, second: 3, third: 1}
 					};
 
 function findTriads(){

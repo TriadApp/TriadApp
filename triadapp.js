@@ -14,18 +14,34 @@ var noteDiffDict = {
 						aug: {first: 3, second: 3},
 						dim: {first: 2, second: 2},
 						sus2: {first: 1, second: 4},
-						sus4: {first: 4, second: 1}
+						sus4: {first: 4, second: 1},
+						add9: {first: 3, second: 2, third: 6},
+						madd9: {first: 2, second: 3, third: 6},
+						maj7: {first: 3, second: 2, third: 3},
+						minor7: {first: 2, second: 3, third: 2},
+						dominant7: {first: 3, second: 2, third: 2},
+						sixth: {first: 3, second: 2, third: 1},
+						minor6th: {first: 2, second: 3, third: 1},
 					};
 
 function findTriads(){
-	var triadType = getDropdownSelectedValue("triadTypeFinder");
-	//var note = getDropdownSelectedValue(notesFinderDropdownID);
+	var triadType = getDropdownSelectedValue("triadTypeFinder");	
 	var position = getDropdownSelectedValue("position");
-	var triad = ['', '', ''];	
+	var triad = ['', '', '', ''];	
 	
 	var triadNoteDiffs = noteDiffDict[triadType];
-	
-	if(position === "third"){
+	if(position === "fourth"){
+		triad[3] = getDropdownSelectedText(notesFinderDropdownID);
+		
+		var fourthNoteIndex = musicalNotes.lastIndexOf(triad[3]);
+		var thirdNoteIndex = fourthNoteIndex - triadNoteDiffs.third - 1;
+		var secondNoteIndex = thirdNoteIndex - triadNoteDiffs.second - 1;
+		var rootNoteIndex = secondNoteIndex - triadNoteDiffs.first - 1;
+		
+		triad[2] = musicalNotes[thirdNoteIndex];
+		triad[1] = musicalNotes[secondNoteIndex];
+		triad[0] = musicalNotes[rootNoteIndex];
+	}else if(position === "third"){
 		triad[2] = getDropdownSelectedText(notesFinderDropdownID);
 		
 		var thirdNoteIndex = musicalNotes.lastIndexOf(triad[2]);		
@@ -45,9 +61,20 @@ function findTriads(){
 		
 		triad[2] = musicalNotes[thirdNoteIndex];
 		triad[0] = musicalNotes[rootNoteIndex];
+	}else if(position === "first"){
+		triad[1] = getDropdownSelectedText(notesFinderDropdownID);
+		
+		var secondNoteIndexFromBeginning = musicalNotes.indexOf(triad[1]);		
+		var thirdNoteIndex = secondNoteIndexFromBeginning + triadNoteDiffs.second + 1;
+		
+		var secondNoteIndexFromLast = musicalNotes.lastIndexOf(triad[1]);	
+		var rootNoteIndex = secondNoteIndexFromLast - triadNoteDiffs.first - 1;
+		
+		triad[2] = musicalNotes[thirdNoteIndex];
+		triad[0] = musicalNotes[rootNoteIndex];
 	}
 	
-	document.getElementById("showTriadFinder").innerHTML = triad[0] + " - " + triad[1] + " - " + triad[2];
+	document.getElementById("showTriadFinder").innerHTML = triad[0] + " - " + triad[1] + " - " + triad[2] + " - " + triad[3];
 }
 
 function updateTriad(){
